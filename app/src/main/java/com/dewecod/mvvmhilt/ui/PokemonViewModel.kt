@@ -26,11 +26,9 @@ class PokemonViewModel @ViewModelInject constructor(
             .subscribeOn(Schedulers.io())
             .map { response ->
                 val list: ArrayList<Pokemon> = response.results
-                for (pokemon in list) {
-                    val url: String = pokemon.url
-                    val pokemonIndex = url.split("/".toRegex()).toTypedArray()
-                    pokemon.url =
-                        "https://pokeres.bastionbot.org/images/pokemon/" + pokemonIndex[pokemonIndex.size - 1] + ".png"
+                for (position in response.results.indices) {
+                    list[position].url =
+                        "https://pokeres.bastionbot.org/images/pokemon/${position + 1}.png"
                 }
                 list
             }

@@ -27,7 +27,9 @@ class PokemonAdapter(context: Context, list: ArrayList<Pokemon>) :
 
     override fun onBindViewHolder(@NonNull holder: PokemonViewHolder, position: Int) {
         holder.itemBinding.pokemonName.text = mList[position].name
-        Glide.with(mContext).load(mList[position].url).into(holder.itemBinding.pokemonImage)
+        Glide.with(mContext)
+            .load(mList[position].url)
+            .into(holder.itemBinding.pokemonImage)
     }
 
     override fun getItemCount(): Int {
