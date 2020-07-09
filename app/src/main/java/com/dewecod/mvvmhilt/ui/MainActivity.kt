@@ -1,7 +1,8 @@
-package com.dewecod.mvvmhilt
+package com.dewecod.mvvmhilt.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.dewecod.mvvmhilt.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
