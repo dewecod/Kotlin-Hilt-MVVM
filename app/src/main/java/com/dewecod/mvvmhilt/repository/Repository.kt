@@ -5,7 +5,7 @@ import com.dewecod.mvvmhilt.db.PokeDao
 import com.dewecod.mvvmhilt.model.Pokemon
 import com.dewecod.mvvmhilt.net.ApiService
 import com.dewecod.mvvmhilt.response.PokemonResponse
-import io.reactivex.Observable
+import io.reactivex.rxjava3.core.Observable
 import javax.inject.Inject
 
 
