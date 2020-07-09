@@ -16,7 +16,6 @@ import com.dewecod.mvvmhilt.databinding.FragmentHomeBinding
 import com.dewecod.mvvmhilt.model.Pokemon
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
@@ -26,6 +25,7 @@ class HomeFragment : Fragment() {
     private lateinit var viewModel: PokemonViewModel
     private lateinit var adapter: PokemonAdapter
     private lateinit var pokemonList: ArrayList<Pokemon>
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,6 +44,19 @@ class HomeFragment : Fragment() {
         observeData()
         setUpItemTouchHelper()
         viewModel.getPokemonList()
+    }
+
+    private fun initRecyclerView() {
+        pokemonList = arrayListOf()
+        binding.recycler.layoutManager = LinearLayoutManager(context)
+        adapter = PokemonAdapter(requireContext(), pokemonList)
+        binding.recycler.adapter = adapter
+    }
+
+    private fun observeData() {
+        viewModel.getPokemonList().observe(viewLifecycleOwner, Observer {
+            adapter.updateList(it)
+        })
     }
 
     private fun setUpItemTouchHelper() {
@@ -73,18 +86,6 @@ class HomeFragment : Fragment() {
         itemTouchHelper.attachToRecyclerView(binding.recycler)
     }
 
-
-    private fun observeData() {
-        viewModel.getPokemonList().observe(viewLifecycleOwner, Observer {
-            adapter.updateList(it)
-        })
-    }
-
-    private fun initRecyclerView() {
-        binding.recycler.layoutManager = LinearLayoutManager(context)
-        adapter = PokemonAdapter(requireContext(), pokemonList)
-        binding.recycler.adapter = adapter
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()
