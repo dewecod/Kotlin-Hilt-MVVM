@@ -18,5 +18,5 @@ interface PokeDao {
     fun deleteAll()
 
     @Query("SELECT * FROM pokemon")
-    fun getFavoritePokemons(): LiveData<List<Pokemon?>?>?
+    fun getFavoritePokemons(): LiveData<List<Pokemon>>
 }
