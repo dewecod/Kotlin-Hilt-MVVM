@@ -43,7 +43,7 @@ class HomeFragment : Fragment() {
         initRecyclerView()
         observeData()
         setUpItemTouchHelper()
-        viewModel.getPokemonList()
+        viewModel.loadPokemons()
     }
 
     private fun initRecyclerView() {
