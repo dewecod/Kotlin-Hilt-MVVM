@@ -7,6 +7,6 @@ import androidx.room.PrimaryKey
 data class Pokemon(
     @PrimaryKey(autoGenerate = true)
     private val id: Int,
-    private val name: String,
+    val name: String,
     var url: String
 )
